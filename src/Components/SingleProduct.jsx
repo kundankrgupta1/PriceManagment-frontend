@@ -196,7 +196,7 @@ const SingleProduct = () => {
 					<div className="bg-white p-6 shadow-lg rounded-lg w-full max-w-md sm:max-w-lg md:max-w-3xl mt-6">
 						<div className="flex flex-col md:flex-row justify-between items-center">
 							<h3 className="text-lg md:text-xl font-semibold text-gray-800">Price Details</h3>
-							<span className="text-gray-500">{new Date(createdAt).toLocaleString('en-US', {
+							<span className="text-xs text-gray-500">{new Date(createdAt).toLocaleString('en-US', {
 								weekday: 'long',
 								year: 'numeric',
 								month: 'long',
