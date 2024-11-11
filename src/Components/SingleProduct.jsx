@@ -81,7 +81,7 @@ const SingleProduct = () => {
 		e.preventDefault();
 		setIsLoadingUpdate(true);
 		try {
-			const res = await axios.put(`https://pricemanagment-backend.onrender.com/update/${id}`, { newPrice: newPrice }, {
+			const res = await axios.put(`https://pricemanagment-backend.onrender.com/update/${id}`, { newPrice: Number(newPrice) }, {
 				headers: {
 					Authorization: `Bearer ${token}`
 				}
@@ -224,14 +224,14 @@ const SingleProduct = () => {
 													type="text"
 													placeholder="new price"
 													value={newPrice}
-													onChange={(e) => setNewPrice(Number(e.target.value))}
+													onChange={(e) => setNewPrice(e.target.value)}
 													className="border border-gray-300 rounded-lg px-3 py-[4px] w-20"
 												/>
 												<button
 													type="submit"
 													className="border border-gray-300 rounded-lg px-3 py-[6px] hover:bg-green-500 hover:text-white active:bg-green-800"
 												>
-													{isLoadingUpdate ? <Loading style1={"border-white w-4 h-4"} /> : <FaCheck size={20} />}
+													{isLoadingUpdate ? <Loading style1={"border-blue-500 w-4 h-4"} /> : <FaCheck size={20} />}
 												</button>
 											</form>
 
