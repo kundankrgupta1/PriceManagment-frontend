@@ -79,7 +79,7 @@ const Home = () => {
 					<Search />
 				</div>
 				<div className="my-4 flex items-center justify-between">
-					<h1 className="pl-1 text-xl md:text-3xl font-bold capitalize">Welcome {user.name.split(" ")[0]}!</h1>
+					<h1 className="pl-1 text-xl md:text-3xl font-bold capitalize">Welcome {user ? user.name.split(" ")[0] : "User"}!</h1>
 					<button onClick={() => setOpenAddForm(!openAddForm)}
 						className="bg-blue-600 text-white px-4 py-2 text-lg md:text-xl rounded-md shadow-lg hover:bg-blue-700 active:bg-blue-800 transition-all duration-200 transform hover:scale-105 focus:outline-none"
 					>Add Product</button>

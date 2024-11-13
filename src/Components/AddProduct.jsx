@@ -3,14 +3,14 @@ import { useContext, useRef, useState } from "react";
 import { RiCloseLargeFill } from "react-icons/ri";
 import { ContextProviderApp } from "../Context/ContextProvider";
 import Loading from "./Loading";
+import BrandSelector from "./BrandSelector";
+import CategorySelector from "./CategorySelector";
 
 const AddProduct = ({ fetchData, fetchDataForBrand, fetchDataForCategory }) => {
-	const { openAddForm, setOpenAddForm } = useContext(ContextProviderApp);
+	const { openAddForm, setOpenAddForm, brandName, setBrandName, categoryNameFiltered, setCategoryNameFiltered } = useContext(ContextProviderApp);
 	const imageRef = useRef(null);
 	const [product_image, setProduct_image] = useState(null);
 	const [product, setProduct] = useState("");
-	const [brand, setBrand] = useState("");
-	const [category, setCategory] = useState("");
 	const [single_price, setSingle_price] = useState("");
 	const [box_qty, setBoxQty] = useState("");
 	const [success, setSuccess] = useState("");
@@ -25,8 +25,8 @@ const AddProduct = ({ fetchData, fetchDataForBrand, fetchDataForCategory }) => {
 		const formData = new FormData();
 		formData.append("product_image", imageRef.current.files[0]);
 		formData.append("product", product);
-		formData.append("brand", brand.toLowerCase());
-		formData.append("category", category.toLowerCase());
+		formData.append("brand", brandName.toLowerCase());
+		formData.append("category", categoryNameFiltered.toLowerCase());
 		formData.append("single_price", single_price);
 		formData.append("box_qty", box_qty);
 
@@ -49,8 +49,8 @@ const AddProduct = ({ fetchData, fetchDataForBrand, fetchDataForCategory }) => {
 					setPopup(false);
 				}, 2000)
 				setProduct("")
-				setBrand("")
-				setCategory("")
+				setBrandName("")
+				setCategoryNameFiltered("")
 				setSingle_price("")
 				setBoxQty("")
 				setProduct_image(null)
@@ -108,28 +108,14 @@ const AddProduct = ({ fetchData, fetchDataForBrand, fetchDataForCategory }) => {
 							</div>
 							<div>
 								<label htmlFor="brand" className="block mb-2 text-gray-900 font-medium">Brand:</label>
-								<input
-									type="text"
-									required
-									className="border border-gray-300 w-full p-2 rounded-lg"
-									onChange={(e) => setBrand(e.target.value)}
-									value={brand}
-									placeholder="Enter brand name"
-								/>
+								<BrandSelector />
 							</div>
 						</div>
 					</div>
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
 						<div>
 							<label htmlFor="category" className="block mb-2 text-gray-900 font-medium">Category:</label>
-							<input
-								type="text"
-								required
-								className="border border-gray-300 w-full p-2 rounded-lg"
-								onChange={(e) => setCategory(e.target.value)}
-								value={category}
-								placeholder="Enter category"
-							/>
+							<CategorySelector />
 						</div>
 						<div>
 							<label htmlFor="price" className="block mb-2 text-gray-900 font-medium">Price:</label>

@@ -12,8 +12,10 @@ const ContextProvider = ({ children }) => {
 	const [allProduct, setAllProduct] = useState([]);
 	const [categoryName, setCategoryName] = useState([])
 	const [brandNames, setBrandNames] = useState([]);
+	const [brandName, setBrandName] = useState("");
+	const [categoryNameFiltered, setCategoryNameFiltered] = useState("");
 	return (
-		<ContextProviderApp.Provider value={{ isAuth, setIsAuth, token, setToken, user, setUser, openAddForm, setOpenAddForm, search, setSearch, brand, setBrand, category, setCategory, allProduct, setAllProduct, brandNames, setBrandNames, categoryName, setCategoryName }}>
+		<ContextProviderApp.Provider value={{ isAuth, setIsAuth, token, setToken, user, setUser, openAddForm, setOpenAddForm, search, setSearch, brand, setBrand, category, setCategory, allProduct, setAllProduct, brandNames, setBrandNames, categoryName, setCategoryName, brandName, setBrandName, categoryNameFiltered, setCategoryNameFiltered }}>
 			{children}
 		</ContextProviderApp.Provider>
 	)
