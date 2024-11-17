@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { ContextProviderApp } from "../Context/ContextProvider";
 
 const CategorySelector = () => {
-	const categories = ["appliances", "switches", "computer accessories", "lights", "fans", "mobiles", "tv", "soundbox",]
+	const categories = ["home appliances", "electrical goods", "computer accessories", "lights", "fans", "mobiles", "tv", "soundbox", "wire", "pipes & fittings"]
 
 	const [search, setSearch] = useState("");
 	const [filtered, setFiltered] = useState([]);
