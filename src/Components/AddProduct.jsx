@@ -8,6 +8,8 @@ import CategorySelector from "./CategorySelector";
 
 const AddProduct = ({ fetchData, fetchDataForBrand, fetchDataForCategory }) => {
 	const { openAddForm, setOpenAddForm, brandName, setBrandName, categoryNameFiltered, setCategoryNameFiltered } = useContext(ContextProviderApp);
+	const [searchForCategory, setSearchForCategory] = useState("");
+	const [searchForBrand, setSearchForBrand] = useState("");
 	const imageRef = useRef(null);
 	const [product_image, setProduct_image] = useState(null);
 	const [product, setProduct] = useState("");
@@ -75,7 +77,15 @@ const AddProduct = ({ fetchData, fetchDataForBrand, fetchDataForCategory }) => {
 			<div className="w-full md:w-3/4 lg:w-1/2 m-auto bg-white shadow-lg rounded-lg p-8">
 				<div className="mb-6 flex justify-between items-center">
 					<h2 className="text-2xl font-bold text-center">Add Product</h2>
-					<button onClick={() => setOpenAddForm(!openAddForm)}>
+					<button onClick={() => {
+						setOpenAddForm(!openAddForm);
+						setProduct_image(null);
+						setProduct("");
+						setSingle_price("");
+						setBoxQty("");
+						setSearchForCategory("");
+						setSearchForBrand("");
+					}}>
 						<RiCloseLargeFill className="hover:text-red-600" size={20} />
 					</button>
 				</div>
@@ -108,14 +118,14 @@ const AddProduct = ({ fetchData, fetchDataForBrand, fetchDataForCategory }) => {
 							</div>
 							<div>
 								<label htmlFor="brand" className="block mb-2 text-gray-900 font-medium">Brand:</label>
-								<BrandSelector />
+								<BrandSelector searchForBrand={searchForBrand} setSearchForBrand={setSearchForBrand} />
 							</div>
 						</div>
 					</div>
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
 						<div>
 							<label htmlFor="category" className="block mb-2 text-gray-900 font-medium">Category:</label>
-							<CategorySelector />
+							<CategorySelector searchForCategory={searchForCategory} setSearchForCategory={setSearchForCategory} />
 						</div>
 						<div>
 							<label htmlFor="price" className="block mb-2 text-gray-900 font-medium">Price:</label>
