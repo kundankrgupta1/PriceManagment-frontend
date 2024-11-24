@@ -5,6 +5,7 @@ import { ContextProviderApp } from "../Context/ContextProvider";
 import Loading from "./Loading";
 import BrandSelector from "./BrandSelector";
 import CategorySelector from "./CategorySelector";
+import { SERVER_URI } from "../App";
 
 const AddProduct = ({ fetchData, fetchDataForBrand, fetchDataForCategory }) => {
 	const { openAddForm, setOpenAddForm, brandName, setBrandName, categoryNameFiltered, setCategoryNameFiltered } = useContext(ContextProviderApp);
@@ -33,7 +34,7 @@ const AddProduct = ({ fetchData, fetchDataForBrand, fetchDataForCategory }) => {
 		formData.append("box_qty", box_qty);
 
 		try {
-			const res = await axios.post(`https://pricemanagment-backend.onrender.com/add`, formData, {
+			const res = await axios.post(`${SERVER_URI}/add`, formData, {
 				headers: {
 					Authorization: `Bearer ${token}`,
 					"Content-Type": "multipart/form-data"

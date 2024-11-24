@@ -8,6 +8,7 @@ import Search from "../Components/Search"
 import { ContextProviderApp } from "../Context/ContextProvider"
 import axios from "axios"
 import Loading from "../Components/Loading"
+import { SERVER_URI } from "../App"
 
 const Home = () => {
 	const { openAddForm, setOpenAddForm, setAllProduct, setCategoryName } = useContext(ContextProviderApp);
@@ -20,7 +21,7 @@ const Home = () => {
 	const fetchDataForCategory = async () => {
 		const token = localStorage.getItem("token")
 		try {
-			const res = await axios.get(`https://pricemanagment-backend.onrender.com/category`, {
+			const res = await axios.get(`${SERVER_URI}/category`, {
 				headers: {
 					"Content-Type": "application/json",
 					Authorization: `Bearer ${token}`
@@ -34,7 +35,7 @@ const Home = () => {
 	const fetchDataForBrand = async () => {
 		const token = localStorage.getItem("token")
 		try {
-			const res = await axios.get(`https://pricemanagment-backend.onrender.com/brand`, {
+			const res = await axios.get(`${SERVER_URI}/brand`, {
 				headers: {
 					"Content-Type": "application/json",
 					Authorization: `Bearer ${token}`
@@ -49,7 +50,7 @@ const Home = () => {
 	const fetchData = async () => {
 		setLoading(true);
 		try {
-			const res = await axios.get(`https://pricemanagment-backend.onrender.com/all?q=${search}&category=${category}&brand=${brand}`, {
+			const res = await axios.get(`${SERVER_URI}/all?q=${search}&category=${category}&brand=${brand}`, {
 				headers: {
 					Authorization: `Bearer ${token}`
 				}

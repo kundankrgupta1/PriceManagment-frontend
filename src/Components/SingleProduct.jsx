@@ -9,6 +9,7 @@ import { FaCheck } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import Loading from "./Loading";
 import { GiCheckMark } from "react-icons/gi";
+import { SERVER_URI } from "../App";
 
 const SingleProduct = () => {
 	const navigate = useNavigate();
@@ -30,7 +31,7 @@ const SingleProduct = () => {
 	const fetchSingleData = async () => {
 		setIsLoading(true)
 		try {
-			const res = await axios.get(`https://pricemanagment-backend.onrender.com/product/${id}`, {
+			const res = await axios.get(`${SERVER_URI}/product/${id}`, {
 				headers: {
 					Authorization: `Bearer ${token}`
 				}
@@ -54,7 +55,7 @@ const SingleProduct = () => {
 		setConfirmDelete(false);
 		setIsLoadingDelete(true);
 		try {
-			const res = await axios.delete(`https://pricemanagment-backend.onrender.com/delete/${id}`, {
+			const res = await axios.delete(`${SERVER_URI}/delete/${id}`, {
 				headers: {
 					Authorization: `Bearer ${token}`
 				}
@@ -81,7 +82,7 @@ const SingleProduct = () => {
 		e.preventDefault();
 		setIsLoadingUpdate(true);
 		try {
-			const res = await axios.put(`https://pricemanagment-backend.onrender.com/update/${id}`, { newPrice: Number(newPrice) }, {
+			const res = await axios.put(`${SERVER_URI}/update/${id}`, { newPrice: Number(newPrice) }, {
 				headers: {
 					Authorization: `Bearer ${token}`
 				}

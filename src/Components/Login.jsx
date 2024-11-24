@@ -3,6 +3,7 @@ import { ContextProviderApp } from "../Context/ContextProvider";
 import axios from "axios";
 import { BiShow, BiHide } from "react-icons/bi";
 import Loading from "./Loading";
+import { SERVER_URI } from "../App";
 
 const Login = () => {
 	const { setIsAuth, setToken, setUser } = useContext(ContextProviderApp);
@@ -21,7 +22,7 @@ const Login = () => {
 		setIsLoading(true);
 		if (!otpSent) {
 			try {
-				const res = await axios.post(`https://pricemanagment-backend.onrender.com/login`, { email, password });
+				const res = await axios.post(`${SERVER_URI}/login`, { email, password });
 				setSuccess(res.data.message);
 				if (res.data.success) {
 					setIsLoading(false);
@@ -46,7 +47,7 @@ const Login = () => {
 			}
 		} else if (otpSent) {
 			try {
-				const res = await axios.post(`https://pricemanagment-backend.onrender.com/otp`, { email, otp });
+				const res = await axios.post(`${SERVER_URI}/otp`, { email, otp });
 				if (res.data.success) {
 					setIsLoading(false);
 					setSuccess(res.data.message);

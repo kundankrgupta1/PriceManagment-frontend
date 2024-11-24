@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
 import { AiFillProduct } from "react-icons/ai";
+import { useState } from "react";
 
 const ProductCard = ({ _id, product_image, product, brand, category, single_price, box_qty, box_price, createdAt }) => {
+	const [view, setView] = useState(false);
 	return (
 		<Link to={`/product/${_id}`}>
 			<div className="bg-white rounded-md overflow-hidden"
@@ -15,9 +17,8 @@ const ProductCard = ({ _id, product_image, product, brand, category, single_pric
 					alt={product}
 					className="my-2 w-full h-36 md:h-48 object-contain"
 				/>
-				
 				<div className="p-4">
-					<p className="text-xs font-semibold text-gray-500 md:text-lg md:line-clamp-none md:overflow-visible md:h-auto overflow-hidden text-ellipsis h-9">
+					<p className="text-sm font-semibold md:text-lg md:line-clamp-none md:overflow-visible md:h-auto overflow-hidden text-ellipsis h-[38px]">
 						{product}
 					</p>
 					<h1 className="text-2xl leading-[0.2rem] font-bold my-4">
